@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
-#include <windows.h>
-#include <unistd.h>
+#include <windows.h> // for windows users
+#include <unistd.h> // for linux users
 #include <time.h>
 #include <conio.h>
 using namespace std;
