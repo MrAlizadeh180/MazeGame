@@ -42,7 +42,7 @@ int main()
             }
             cout << endl;
         }
-        //sleep(0.1);
+        sleep(0.1);
         char chr;
         cin >> chr;
         if( chr == 'w'){ // Move Up
