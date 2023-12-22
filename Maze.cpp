@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <windows.h>
+#include <time.h>
 #include <conio.h>
 using namespace std;
 //color @ 
@@ -42,7 +43,7 @@ int main()
             }
             cout << endl;
         }
-        sleep(0.1);
+       sleep(0.1);
         char chr;
         cin >> chr;
         if( chr == 'w'){ // Move Up
