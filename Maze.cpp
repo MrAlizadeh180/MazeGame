@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include <windns.h>
+#include <windows.h>
 #include <conio.h>
 using namespace std;
 //color @ 
