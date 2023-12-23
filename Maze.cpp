@@ -115,8 +115,8 @@ int main()
         else if( chr == 'd'){ // Move right
             X++;  
         }
-        //cout << "\033[2J\033[1;1H";
-        system("clear");
+        cout << "\033[2J\033[1;1H";
+        //system("clear");
     }
 }
 
