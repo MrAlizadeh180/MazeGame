@@ -5,6 +5,7 @@
 #include <time.h>
 #include <conio.h>
 using namespace std;
+// clearing console
 //color @ 
 // update walls array 
 // function -> check walls input(int i,int j,char move(w,a,s,d)) @ -> bool 
@@ -61,6 +62,7 @@ const int lanes[][2] = {
     ,{48,37},{48,39},{48,49},{49,2},{49,6},{49,10},{49,12},{49,14},{49,18},{49,20},{49,22},{49,24},{49,26}
     ,{49,28},{49,30},{49,32},{49,34},{49,36},{49,40},{49,42},{49,44},{49,46},{49,48},{50,33}
 };
+
 bool isNotWall(int x, int y)
 {
     if ( x > 25){
@@ -78,7 +80,6 @@ bool isNotWall(int x, int y)
         return false;
     }
 }
-
 
 int Y = 0; //players first vertical index 
 int X = 43; //players first horizontal index 
@@ -115,8 +116,7 @@ int main()
         else if( chr == 'd'){ // Move right
             X++;  
         }
-        cout << "\033[2J\033[1;1H";
-        //system("clear");
+        system("cls");
     }
 }
 
