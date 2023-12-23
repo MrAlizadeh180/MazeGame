@@ -81,7 +81,7 @@ bool isNotWall(int x, int y)
 
 
 int Y = 0; //players first vertical index 
-int X = 3; //players first horizontal index 
+int X = 43; //players first horizontal index 
 
 int main()
 {
@@ -116,7 +116,7 @@ int main()
             X++;  
         }
         //cout << "\033[2J\033[1;1H";
-        system("cls");
+        system("clear");
     }
 }
 
