@@ -61,14 +61,22 @@ const int lanes[][2] = {
     ,{48,37},{48,39},{48,49},{49,2},{49,6},{49,10},{49,12},{49,14},{49,18},{49,20},{49,22},{49,24},{49,26}
     ,{49,28},{49,30},{49,32},{49,34},{49,36},{49,40},{49,42},{49,44},{49,46},{49,48},{50,33}
 };
-bool isNotWall(int x, int y) // function that checks if threre is wall on point(x,y) in array
+bool isNotWall(int x, int y)
 {
-    for (int i = 0; i < 10; i++)
-    {
-        if (lanes[i][0] == x && walls[i][1] == y)
-            return true;
+    if ( x > 25){
+        for (int i = 626; i >= 300 ;i--){
+            if (lanes[i][0] == x && lanes[i][1] == y)
+               return true;
+         } 
+        return false;
     }
-    return false;
+    else {
+        for (int i = 0; i <= 340 ;i++){
+            if (lanes[i][0] == x && lanes[i][1] == y)
+               return true;
+        }
+        return false;
+    }
 }
 
 
