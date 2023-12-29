@@ -208,9 +208,10 @@ void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter
     	direction += show + num_str + "==> ";
     	dir_counter ++;
     }
-        setcolor(0x0A); 
-    	cout << endl << "Direction: "<<direction << endl;
-        setcolor(0x07);
+    cout << endl << "Direction: ";
+    setcolor(0x0A); 
+    cout <<direction << endl;
+    setcolor(0x07);
 }
 
 void printLevel(int lvl){ // this function prints the borad of Maze game
@@ -227,7 +228,7 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
 }
 
 void setMe(int lvl){
-    // set palyer position
+    // set palyer position and color
     int x, y;
     color_choice = colorChoice();
     x = getPos(lvl, y);
@@ -282,10 +283,10 @@ int getPos(int lvl, int &y){ // this function is useful to find the position of 
 
 bool isWall(int x, int y, int lvl){ // this function checks that palyer can move or not
 	if(x<=0||y<=0 || lvl1[x][y] == '+'){
-        setcolor(0x07);
+        setcolor(Red);
         cout << "\n\t\tCannot move! That is a wall / boundary.";
         setcolor(0x0C);
-        Sleep(700);
+        Sleep(1200);
         system("CLS");
         printLevel(lvl);
         return true;
@@ -317,6 +318,7 @@ unsigned char colorChoice(){
     }
     cout << "Your choice: ";
     cin >> choice;
+    system("CLS");
     if (choice <= 1 && choice <= 6)return color_code_arr[choice-1] ;
     colorChoice();
 };
