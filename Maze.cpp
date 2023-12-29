@@ -232,6 +232,7 @@ void setMe(int lvl){
     int x, y;
     color_choice = colorChoice();
     system("CLS");
+
     x = getPos(lvl, y);
     lvl1[x][y] = me;
 
@@ -311,7 +312,7 @@ unsigned char colorChoice(){
     unsigned char color_code_arr[6] = {0x0B, 0x0C, 0x0A, 0x0F, 0x0E, 0x0D};
     int choice;
     cout << "Please choose a color for playing the game " << endl;
-    for(int i = 0; i < 6; i++){
+    for(int i = 1; i <= 6; i++){
         cout << i;
         setcolor(color_code_arr[i]);
         cout << ": "<< color_arr[i] << endl;
@@ -320,6 +321,6 @@ unsigned char colorChoice(){
     cout << "Your choice: ";
     cin >> choice;
     if (choice <= 1 && choice <= 6)return color_code_arr[choice-1];
-    colorChoice();
     system("CLS");
-};
+    colorChoice();
+}
