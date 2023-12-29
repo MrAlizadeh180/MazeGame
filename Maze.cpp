@@ -247,7 +247,7 @@ int main(void)
     return 0;
 }
 
-void ShowDirection(int x,int y, string (&direction)[], int dir_size,int& position_index){// needs change
+void ShowDirection(int x,int y, string(&direction)[5], int dir_size,int& position_index){// needs change
 	string base=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 	string show="";
 	show=base[(x+1)/2];
