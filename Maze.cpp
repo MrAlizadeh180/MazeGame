@@ -231,6 +231,7 @@ void setMe(int lvl){
     // set palyer position and color
     int x, y;
     color_choice = colorChoice();
+    system("CLS");
     x = getPos(lvl, y);
     lvl1[x][y] = me;
 
@@ -318,7 +319,7 @@ unsigned char colorChoice(){
     }
     cout << "Your choice: ";
     cin >> choice;
-    system("CLS");
-    if (choice <= 1 && choice <= 6)return color_code_arr[choice-1] ;
+    if (choice <= 1 && choice <= 6)return color_code_arr[choice-1];
     colorChoice();
+    system("CLS");
 };
