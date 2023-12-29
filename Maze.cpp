@@ -299,7 +299,10 @@ char getKeyPress(){
 }
 
 bool isExit(int x, int y, int lvl){// this funvtion checks if user is in the exit of the Maze or not
-   if ( x == 50 && y == 33) return true;
+   if ( x == 50 && y == 33) {
+    cout << "moorche";
+    return true;
+   }
    return false;
 }
 
