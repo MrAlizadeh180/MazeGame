@@ -1,18 +1,13 @@
 #include <iostream>
-using std::endl;
-using std::cout;
-using std::cin;
-#include <iostream>
 #include <cmath>
 #include <windows.h> // for windows users
 #include <unistd.h> // for linux users
 #include <time.h>
 #include <conio.h>
-#include <string>
-using std::string;
-using namespace std; 
-#include<Windows.h>
-#include<conio.h>
+#include <string> 
+using namespace std;
+//#include<Windows.h>
+//#include<conio.h>
 
 
 char getKeyPress();
