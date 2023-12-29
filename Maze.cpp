@@ -10,7 +10,16 @@
 #include <string> 
 using namespace std;
 
+// color definition
+#define Green 0x0A
+#define Red 0x0C
+#define Aqua 0x0B
+#define Yellow 0x0E
+#define White 0x0F
+#define Purple 0x0D
+
 // Functions
+unsigned char colorChoice();
 char getKeyPress();
 void printLevel(int);
 void setMe(int);
@@ -20,14 +29,15 @@ int getPos(int, int&);
 void update(int, int, int);
 void makeSpace(int, int, int);
 void ShowDirection(int x,int y, string& direction, int dir_size,int& counter);
-
-void setcolor( unsigned char color )
+void setcolor( unsigned char color )// this function is useful to change the color of console
 {
   SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), color );
 }
 
 const char space = ' ';
 const char me = '@';
+unsigned char color_choice;
+
 
 char lvl1[51][51] = { 
                  
@@ -198,8 +208,9 @@ void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter
     	direction += show + num_str + "==> ";
     	dir_counter ++;
     }
-    	cout << "Direction: "<<direction;
-	
+        setcolor(0x0A); 
+    	cout << endl << "Direction: "<<direction << endl;
+        setcolor(0x07);
 }
 
 void printLevel(int lvl){ // this function prints the borad of Maze game
@@ -208,7 +219,7 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
             cout << endl << "\t\t\t\t";
             for (int j = 0; j != 51; ++j){
                 setcolor( 0x07 );  // Initial color for program
-                if(lvl1[i][j] == '@')setcolor( 0x0C );
+                if(lvl1[i][j] == '@')setcolor( color_choice );
                 cout << lvl1[i][j] <<" ";
                 setcolor( 0x07 );
             }
@@ -218,8 +229,11 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
 void setMe(int lvl){
     // set palyer position
     int x, y;
+    color_choice = colorChoice();
     x = getPos(lvl, y);
     lvl1[x][y] = me;
+
+
 
 
 }
@@ -268,11 +282,13 @@ int getPos(int lvl, int &y){ // this function is useful to find the position of 
 
 bool isWall(int x, int y, int lvl){ // this function checks that palyer can move or not
 	if(x<=0||y<=0 || lvl1[x][y] == '+'){
-        cout << "\n\t\t\tCannot move! That is a wall / boundary.";
-            Sleep(400);
-            system("CLS");
-            printLevel(lvl);
-            return true;
+        setcolor(0x07);
+        cout << "\n\t\tCannot move! That is a wall / boundary.";
+        setcolor(0x0C);
+        Sleep(700);
+        system("CLS");
+        printLevel(lvl);
+        return true;
 	}
     return false;
 }
@@ -287,3 +303,18 @@ void makeSpace(int lvl, int x, int y){
           lvl1[x][y] = space;
 
 }
+
+unsigned char colorChoice(){
+    string color_arr[6] = {"Aque", "Red", "Green", "White", "Yellow", "Purple"};
+    unsigned char color_code_arr[6] = {0x0B, 0x0C, 0x0A, 0x0F, 0x0E, 0x0D};
+    int choice;
+    for(int i = 0; i < 6; i++){
+        cout << i;
+        setcolor(color_code_arr[i]);
+        cout << ": "<< color_arr[i];
+        setcolor(0x07); // white color
+    }
+    cin >> choice;
+    if (choice <= 1 && choice <= 6)return color_code_arr[choice-1] ;
+    colorChoice();
+};
