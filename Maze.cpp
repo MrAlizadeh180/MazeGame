@@ -15,6 +15,7 @@ bool isExit(int, int, int);
 bool isWall(int, int, int);
 int getPos(int, int&);
 void update(int, int, int);
+void makeSpace(int, int, int);
 void ShowPos(int ,int);
 
 const char space = ' ';
@@ -335,5 +336,10 @@ bool isWall(int x, int y, int lvl){ // this function checks that palyer can move
 void update(int lvl, int x, int y){ // this function updates the board of the Game after receiving the position of player
         lvl1[x][y] = me;
         printLevel(lvl);
+
+}
+
+void makeSpace(int lvl, int x, int y){
+          lvl1[x][y] = space;
 
 }
