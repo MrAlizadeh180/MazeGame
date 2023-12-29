@@ -111,7 +111,8 @@ int main(void)
     printLevel(lvl);
  
     int x, y;
-  
+    time_t start, ending;
+    time(&start);
     while (true){
 
         char move = getKeyPress();
@@ -145,7 +146,14 @@ int main(void)
             if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
                 system("CLS");
                 cout << "You Win!" << endl;// need change
+                time(&ending);
+                cout << "You won the Game in: ";
+                setcolor(Green);
+                cout << difftime(ending, start);
+                setcolor(0x07);
+                cout << " seconds " << endl;
                 Sleep(2000);
+                break;
             }
             system("CLS");
             makeSpace(lvl, x, y);
@@ -155,7 +163,6 @@ int main(void)
         else
             ShowDirection(x,y,direction,dir_size,dir_counter);
     }
-
     return 0;
 }
 
