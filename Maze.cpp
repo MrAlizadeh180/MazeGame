@@ -16,7 +16,7 @@ bool isWall(int, int, int);
 int getPos(int, int&);
 void update(int, int, int);
 void makeSpace(int, int, int);
-void ShowPos(int ,int);
+void ShowDirection(int ,int, string, int, int);
 
 const char space = ' ';
 const char me = '@';
@@ -150,7 +150,11 @@ int main(void)
 {
     int lvl;
     lvl=1;
-   
+    
+    string direction[5] = {""};
+    int dir_size = 5;
+    int position_index = 0;
+
     int Y = 0; //players first vertical index 
     int X = 43; //players first horizontal index 
     int num = 25;
@@ -178,10 +182,10 @@ int main(void)
                 system("CLS");
                 makeSpace(lvl, x, y);
                 update(lvl, x - 2, y);
-                ShowPos(x-2,y);
+                ShowDirection(x-2,y,direction,dir_size,position_index);
             }
             else
-                ShowPos(x,y);
+                ShowDirection(x,y,direction,dir_size,position_index);//?
             break;
         case 'd':
             x = getPos(lvl, y);
@@ -195,10 +199,10 @@ int main(void)
                 system("CLS");
                 makeSpace(lvl, x, y);
                 update(lvl, x + 2, y);
-                ShowPos(x+2,y);
+                ShowDirection(x+2,y,direction,dir_size,position_index);
             }
             else
-                ShowPos(x,y);
+                ShowDirection(x,y,direction,dir_size,position_index);
             
             break;
         case 'l':
@@ -212,10 +216,10 @@ int main(void)
                 system("CLS");
                 makeSpace(lvl, x, y);
                 update(lvl, x, y - 2);
-                ShowPos(x,y-2);
+                ShowDirection(x,y-2,direction,dir_size,position_index);
             }
             else
-                ShowPos(x,y);
+                ShowDirection(x,y,direction,dir_size,position_index);
             
             break;
         case 'r':
@@ -229,10 +233,10 @@ int main(void)
                 system("CLS");
                 makeSpace(lvl, x, y);
                 update(lvl, x, y + 2);
-                ShowPos(x,y+2);
+                ShowDirection(x,y+2,direction,dir_size,position_index);
             }
             else
-                ShowPos(x,y);            
+                ShowDirection(x,y,direction,dir_size,position_index);            
             break;
         default:
             break;
@@ -243,15 +247,29 @@ int main(void)
     return 0;
 }
 
-void ShowPos(int x,int y){// needs change
+void ShowDirection(int x,int y, string direction[], int dir_size,int& position_index){// needs change
 	string base=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 	string show="";
 	show=base[(x+1)/2];
 	y = (y+1)/2;
+    
+    if(position_index == dir_size - 1){ // 
+        for(int i = 1; i != dir_size; i++){
+            string temp = direction[i];
+            direction[i-1] = temp;
+        }
+    }
+    else{
+        position_index++;
+    }
+    direction[position_index] = show+to_string(y);
 
-    show = show+to_string(y);	
+    cout << "Direction : ";
+	for(string i : direction){
+        if(i!="")cout << i <<"=> ";
+        else break;
+    }
 	cout<<endl;
-	cout<<show;
 	
 }
 
