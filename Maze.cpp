@@ -314,8 +314,8 @@ unsigned char colorChoice(){
     cout << "Please choose a color for playing the game " << endl;
     for(int i = 1; i <= 6; i++){
         cout << i;
-        setcolor(color_code_arr[i]);
-        cout << ": "<< color_arr[i] << endl;
+        setcolor(color_code_arr[i-1]);
+        cout << ": "<< color_arr[i-1] << endl;
         setcolor(0x07); // white color
     }
     cout << "Your choice: ";
