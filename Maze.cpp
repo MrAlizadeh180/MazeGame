@@ -14,9 +14,7 @@ void setMe(int);
 bool isExit(int, int, int);
 bool isWall(int, int, int);
 int getPos(int, int&);
-int getX(int, int &);
 void update(int, int, int);
-void makeSpace(int, int, int);
 void ShowPos(int ,int);
 
 const char space = ' ';
@@ -74,7 +72,7 @@ const int lanes[][2] = {
 char lvl1[51][51] = { 
                  
 					{'+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+',' ','+','+','+','+','+','+','+'},
-                    {'+',' ','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+',' ',' ',' ',' ',' ','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','X',' ',' ',' ',' ',' ',' ','+'},
+                    {'+',' ','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+',' ',' ',' ',' ',' ','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','@',' ',' ',' ',' ',' ',' ','+'},
                     {'+',' ','+',' ','+','+','+','+','+',' ','+',' ','+',' ','+',' ','+',' ','+',' ','+',' ','+',' ','+','+','+','+','+',' ','+',' ','+',' ','+','+','+','+','+','+','+',' ','+',' ','+','+','+','+','+',' ','+'},
                     {'+',' ',' ',' ','+',' ',' ',' ','+',' ','+',' ','+',' ',' ',' ','+',' ','+',' ',' ',' ','+',' ',' ',' ','+',' ',' ',' ','+',' ','+',' ','+',' ',' ',' ',' ',' ','+',' ',' ',' ','+',' ',' ',' ',' ',' ','+'},
                     {'+','+','+','+','+',' ','+','+','+',' ','+',' ','+','+','+','+','+',' ','+','+','+','+','+',' ','+',' ','+',' ','+','+','+','+','+',' ','+',' ','+','+','+',' ','+',' ','+','+','+',' ','+','+','+','+','+'},
@@ -270,7 +268,7 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
 void setMe(int lvl){
     // set palyer position
     int x, y;
-    x = getX(lvl, y);
+    x = getPos(lvl, y);
     lvl1[x][y] = me;
 
 
@@ -334,28 +332,8 @@ bool isWall(int x, int y, int lvl){ // this function checks that palyer can move
     return false;
 }
 
-int getX(int lvl, int &y){ // this function finds the index of X -> (palyer)@
-    int xCoord;
-        for (int i = 0; i != 51; ++i){
-            for (int j = 0; j != 51; ++j){
-                if (lvl1[i][j] == 'X'){
-                    xCoord = i;
-                    y = j;
-                    return xCoord;
-                }
-            }
-        }
-
-    return 0;
-}
-
 void update(int lvl, int x, int y){ // this function updates the board of the Game after receiving the position of player
         lvl1[x][y] = me;
         printLevel(lvl);
-
-}
-
-void makeSpace(int lvl, int x, int y){
-          lvl1[x][y] = space;
 
 }
