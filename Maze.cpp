@@ -175,7 +175,7 @@ int main(void)
     return 0;
 }
 
-void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter){// needs change
+void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter){// this function shows the direction of player moves
 	string base=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 	string show="";
 	show=base[(x+1)/2];
@@ -199,7 +199,9 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
     for (int i = 0; i != 51; ++i){
             cout << endl << "\t\t\t\t";
             for (int j = 0; j != 51; ++j){
+                if(lvl1[i][j] == '@') system("Color B4");
                 cout << lvl1[i][j] <<" ";
+                system("Color BA");
             }
         } cout << endl;
 }
