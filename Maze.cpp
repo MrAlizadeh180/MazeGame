@@ -286,7 +286,7 @@ unsigned char colorChoice(){
     }
     cout << "Your choice: ";
     cin >> choice;
-    if (choice <= 1 && choice <= 6)return color_code_arr[choice-1];
+    if (1 <= choice && choice <= 6)return color_code_arr[choice-1];
     system("CLS");
     colorChoice();
 }
