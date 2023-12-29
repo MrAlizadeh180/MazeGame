@@ -16,7 +16,7 @@ bool isWall(int, int, int);
 int getPos(int, int&);
 void update(int, int, int);
 void makeSpace(int, int, int);
-void ShowDirection(int ,int, char*, int, int);
+void ShowDirection(int ,int, string, int, int);
 
 const char space = ' ';
 const char me = '@';
@@ -151,7 +151,7 @@ int main(void)
     int lvl;
     lvl=1;
     
-    char* direction[5] = {""};
+    string direction[5] = {""};
     int dir_size = 5;
     int position_index = 0;
 
@@ -247,7 +247,7 @@ int main(void)
     return 0;
 }
 
-void ShowDirection(int x,int y, char*direction[5], int dir_size,int& position_index){// needs change
+void ShowDirection(int x,int y, string direction[], int dir_size,int& position_index){// needs change
 	string base=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 	string show="";
 	show=base[(x+1)/2];
