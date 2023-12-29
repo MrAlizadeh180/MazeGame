@@ -265,8 +265,8 @@ void ShowDirection(int x,int y, string direction[], int dir_size,int& position_i
     direction[position_index] = show+to_string(y);
 
     cout << "Direction : ";
-	for(string i : direction){
-        if(i!="")cout << i <<"=> ";
+	for(int i = 0; i < dir_size; i++){
+        if(direction[i]!="")cout << i <<"=> ";
         else break;
     }
 	cout<<endl;
