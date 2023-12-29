@@ -8,9 +8,9 @@
 using namespace std;
 
 // Functions
-char getKeyPress();//
-void printLevel(int);//
-void setMe(int);//
+char getKeyPress();
+void printLevel(int);
+void setMe(int);
 bool isExit(int, int, int);
 bool isWall(int, int, int);
 int getPos(int, int&);
@@ -169,7 +169,6 @@ int main(void)
         char move = getKeyPress();
 
         switch (move){
-
         case 'u':
             x = getPos(lvl, y);
             if (!isWall(x - 1, y, lvl) && !isWall(x - 2, y, lvl)){
@@ -235,13 +234,12 @@ int main(void)
                 ShowPos(x,y+2);
             }
             else
-                ShowPos(x,y);
-            
+                ShowPos(x,y);            
             break;
         default:
             break;
         }
-
+    
     }
 
     return 0;
@@ -301,29 +299,28 @@ char getKeyPress(){
     return key;
 }
 
-bool isExit(int x, int y, int lvl){
+bool isExit(int x, int y, int lvl){// this funvtion checks if user is in the exit of the Maze or not
    if (lvl1[x][y] == 'O'){
         return true;
    }
    return false;
 }
 
-int getPos(int lvl, int &y){
+int getPos(int lvl, int &y){ // this function is useful to find the position of player
     int xCoord;
     for (int i = 0; i != 51; ++i){
-            for (int j = 0; j != 51; ++j){
-                if (lvl1[i][j] == '@'){
-                    xCoord = i;
-                    y = j;
-                    return xCoord;
-                }
+        for (int j = 0; j != 51; ++j){
+            if (lvl1[i][j] == '@'){
+                xCoord = i;
+                y = j;
+                return xCoord;
             }
         }
-
+    }
     return 0;
 }
 
-bool isWall(int x, int y, int lvl){
+bool isWall(int x, int y, int lvl){ // this function checks that palyer can move or not
 	if(x<0||y<0){
 	    	return true;
 	}
@@ -334,15 +331,10 @@ bool isWall(int x, int y, int lvl){
             printLevel(lvl);
             return true;
         }
-
-    else {
-            return false;
-        }
-
-    return true;
+    return false;
 }
 
-int getX(int lvl, int &y){
+int getX(int lvl, int &y){ // this function finds the index of X -> (palyer)@
     int xCoord;
         for (int i = 0; i != 51; ++i){
             for (int j = 0; j != 51; ++j){
@@ -357,7 +349,7 @@ int getX(int lvl, int &y){
     return 0;
 }
 
-void update(int lvl, int x, int y){
+void update(int lvl, int x, int y){ // this function updates the board of the Game after receiving the position of player
         lvl1[x][y] = me;
         printLevel(lvl);
 
