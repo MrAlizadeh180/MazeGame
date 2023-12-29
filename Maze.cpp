@@ -247,13 +247,14 @@ void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter
 	string show="";
 	show=base[(x+1)/2];
 	y = (y+1)/2;
-
+    string num_str  = to_string(y);
+    if(y < 10) num_str = "0"+num_str;
     if( dir_counter == dir_size ){
     	direction.erase (0,7);
-    	direction += show + to_string(y) + "==> "; 
+    	direction += show + num_str + "==> "; 
     }
     else{
-    	direction += show + to_string(y) + "==> ";
+    	direction += show + num_str + "==> ";
     	dir_counter ++;
     }
     	cout << "Direction: "<<direction;
