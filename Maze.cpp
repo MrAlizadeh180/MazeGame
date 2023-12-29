@@ -6,13 +6,11 @@
 #include <conio.h>
 #include <string> 
 using namespace std;
-//#include<Windows.h>
-//#include<conio.h>
 
-
-char getKeyPress();
-void printLevel(int);
-void setMe(int);
+// Functions
+char getKeyPress();//
+void printLevel(int);//
+void setMe(int);//
 bool isExit(int, int, int);
 bool isWall(int, int, int);
 int getPos(int, int&);
@@ -149,49 +147,24 @@ bool isNotWall(int x, int y)
         return false;
     }
 }
-int main(void){
 
+int main(void)
+{
     int lvl;
     lvl=1;
-
-    
+   
     int Y = 0; //players first vertical index 
     int X = 43; //players first horizontal index 
     int num = 25;
     int x1,y1; 
-   // int size=*(&lanes + 1) - lanes;
-/*
-
-  for (int i = 0; i < 51; i++)
-    {
-        for (int j = 0; j < 51; j++)
-        {
-            lvl1[i][j] = '#';
-        }
-    }
-
-
-    for(int i=0;i<size-1;i++) 
-    {
-    	x1=lanes[i][0];
-    	y1=lanes[i][1];       
-      	lvl1[x1][y1]=' ';
-	}
   
-   lvl1[Y][X]='@';
-  */
-  
-
     system("CLS");
-
     setMe(lvl);
-
-
-		 printLevel(lvl);
+    printLevel(lvl);
  
     int x, y;
   
-    while (1){
+    while (true){
 
         char move = getKeyPress();
 
@@ -273,8 +246,8 @@ int main(void){
 
     return 0;
 }
-void ShowPos(int x,int y)
-{
+
+void ShowPos(int x,int y){// needs change
 	string base=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 	string show="";
 	show=base[(x+1)/2];
@@ -286,19 +259,18 @@ void ShowPos(int x,int y)
 	
 }
 
-
-
-void printLevel(int lvl){
+void printLevel(int lvl){ // this function prints the borad of Maze game
     cout << "\n";
     for (int i = 0; i != 51; ++i){
             cout << endl << "\t\t\t\t";
             for (int j = 0; j != 51; ++j){
-                cout << lvl1[i][j]<<" ";
+                cout << lvl1[i][j] <<" ";
             }
         } cout << endl;
 }
 
 void setMe(int lvl){
+    // set palyer position
     int x, y;
     x = getX(lvl, y);
     lvl1[x][y] = me;
@@ -307,23 +279,23 @@ void setMe(int lvl){
 }
 //got this function from a CPP forum
 char getKeyPress(){
-
+    // this function gets a key (ARROW KEY) from player and returns char : u -> UP , l -> LEFT, r -> RIGHT, d -> DWON  
     char key = 127;
 
-    key = _getch();
+    key = _getch(); // 
 
     if (key == 0 || key == -32){
 
         key = _getch();
 
         if (key == 72) {
-            key = 'u';
+            key = 'u';  //up
         } else if (key == 75){
-            key = 'l';
+            key = 'l';  //left
         } else if (key == 77){
-            key = 'r';
+            key = 'r';  //right
         } else if (key == 80){
-            key = 'd';
+            key = 'd';  //dwon
         }
     }
     return key;
@@ -333,11 +305,7 @@ bool isExit(int x, int y, int lvl){
    if (lvl1[x][y] == 'O'){
         return true;
    }
-    else {
-            return false;
-        }
-
-    return true;
+   return false;
 }
 
 int getPos(int lvl, int &y){
@@ -394,6 +362,7 @@ void update(int lvl, int x, int y){
         printLevel(lvl);
 
 }
+
 void makeSpace(int lvl, int x, int y){
           lvl1[x][y] = space;
 
