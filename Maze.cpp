@@ -1,4 +1,7 @@
 #include <iostream>
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #include <cmath>
 #include <windows.h> // for windows users
 #include <unistd.h> // for linux users
@@ -17,6 +20,11 @@ int getPos(int, int&);
 void update(int, int, int);
 void makeSpace(int, int, int);
 void ShowDirection(int x,int y, string& direction, int dir_size,int& counter);
+
+void setcolor( unsigned char color )
+{
+  SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), color );
+}
 
 const char space = ' ';
 const char me = '@';
@@ -199,9 +207,10 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
     for (int i = 0; i != 51; ++i){
             cout << endl << "\t\t\t\t";
             for (int j = 0; j != 51; ++j){
-                if(lvl1[i][j] == '@') system("Color B4");
+                setcolor( 0x07 );  // Initial color for program
+                if(lvl1[i][j] == '@')setcolor( 0x0C );
                 cout << lvl1[i][j] <<" ";
-                system("Color BA");
+                setcolor( 0x07 );
             }
         } cout << endl;
 }
