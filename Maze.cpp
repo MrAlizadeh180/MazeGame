@@ -16,7 +16,7 @@ bool isWall(int, int, int);
 int getPos(int, int&);
 void update(int, int, int);
 void makeSpace(int, int, int);
-void ShowDirection(int ,int, string, int, int);
+void ShowDirection(int x,int y, string direction[], int dir_size,int& position_index);
 
 const char space = ' ';
 const char me = '@';
