@@ -116,78 +116,44 @@ int main(void)
 
         char move = getKeyPress();
 
+        int x_move = 0;
+        int y_move = 0;
+
         switch (move){
         case 'u':
-            x = getPos(lvl, y);
-            if (!isWall(x - 1, y, lvl) && !isWall(x - 2, y, lvl)){
-                if (isExit(x - 2, y, lvl)){
-                    system("CLS");
-                    cout << "You Win!" << endl;
-                    Sleep(2000);
-                }
-                system("CLS");
-                makeSpace(lvl, x, y);
-                update(lvl, x - 2, y);
-                ShowDirection(x-2,y,direction,dir_size,dir_counter);
-            }
-            else
-                ShowDirection(x,y,direction,dir_size,dir_counter);//?
+            x_move = -1;
+            y_move = 0;
             break;
         case 'd':
-            x = getPos(lvl, y);
-            if (!isWall(x + 1, y, lvl) && !isWall(x + 2, y, lvl)){
-                if (isExit(x + 2, y, lvl)){
-                    system("CLS");
-                    cout << "You Win!" << endl;
-                    Sleep(2000);
-
-                }
-                system("CLS");
-                makeSpace(lvl, x, y);
-                update(lvl, x + 2, y);
-                ShowDirection(x+2,y,direction,dir_size,dir_counter);
-            }
-            else
-                ShowDirection(x,y,direction,dir_size,dir_counter);
-            
+            x_move = 1;
+            y_move = 0;
             break;
         case 'l':
-            x = getPos(lvl, y);
-            if (!isWall(x, y - 1, lvl) && !isWall(x, y - 2, lvl)) {
-                if (isExit(x, y - 2, lvl)){
-                    system("CLS");
-                    cout << "You Win!" << endl;
-                    Sleep(2000);
-                }
-                system("CLS");
-                makeSpace(lvl, x, y);
-                update(lvl, x, y - 2);
-                ShowDirection(x,y-2,direction,dir_size,dir_counter);
-            }
-            else
-                ShowDirection(x,y,direction,dir_size,dir_counter);
-            
+            y_move = -1;
+            x_move = 0;
             break;
         case 'r':
-            x = getPos(lvl, y);
-            if (!isWall(x, y + 1, lvl) && !isWall(x, y + 2, lvl)){
-                if (isExit(x, y + 2, lvl)){
-                    system("CLS");
-                    cout << "You Win!" << endl;
-                    Sleep(2000);
-                }
-                system("CLS");
-                makeSpace(lvl, x, y);
-                update(lvl, x, y + 2);
-                ShowDirection(x,y+2,direction,dir_size,dir_counter);
-            }
-            else
-                ShowDirection(x,y,direction,dir_size,dir_counter);            
+            y_move = 1;  
+            x_move = 0;      
             break;
         default:
             break;
         }
-    
+
+        x = getPos(lvl, y);
+        if (!isWall(x + x_move, y + y_move, lvl) && !isWall(x + 2*x_move, y + 2*y_move, lvl)){
+            if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
+                system("CLS");
+                cout << "You Win!" << endl;// need change
+                Sleep(2000);
+            }
+            system("CLS");
+            makeSpace(lvl, x, y);
+            update(lvl, x + 2*x_move, y + 2*y_move);
+            ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,dir_counter);
+        }
+        else
+            ShowDirection(x,y,direction,dir_size,dir_counter);
     }
 
     return 0;
