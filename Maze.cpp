@@ -253,6 +253,8 @@ void ShowDirection(int x,int y, string direction[], int dir_size,int& position_i
 	show=base[(x+1)/2];
 	y = (y+1)/2;
     
+    direction[position_index] = show+to_string(y);
+
     if(position_index == dir_size - 1){ // 
         for(int i = 1; i != dir_size; i++){
             string temp = direction[i];
@@ -262,14 +264,12 @@ void ShowDirection(int x,int y, string direction[], int dir_size,int& position_i
     else{
         position_index++;
     }
-    direction[position_index] = show+to_string(y);
 
     cout << "Direction : ";
 	for(int i = 0; i < dir_size; i++){
-        if(direction[i]!="")cout << i <<"=> ";
+        if(direction[i]!="")cout << i <<" ==> ";
         else break;
     }
-	cout<<endl;
 	
 }
 
