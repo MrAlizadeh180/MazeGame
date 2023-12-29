@@ -317,17 +317,13 @@ int getPos(int lvl, int &y){ // this function is useful to find the position of 
 }
 
 bool isWall(int x, int y, int lvl){ // this function checks that palyer can move or not
-	if(x<=0||y<=0){
-        cout << "\n\t\t\tCannot move! That is a wall / boundary."; 
-		return true;
-	}
-    else if (lvl1[x][y] == '+'){
-            cout << "\n\t\t\tCannot move! That is a wall / boundary.";
+	if(x<=0||y<=0 || lvl1[x][y] == '+'){
+        cout << "\n\t\t\tCannot move! That is a wall / boundary.";
             Sleep(400);
             system("CLS");
             printLevel(lvl);
             return true;
-        }
+	}
     return false;
 }
 
