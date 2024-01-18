@@ -36,6 +36,7 @@ void setcolor( unsigned char color )// this function is useful to change the col
 
 const char space = ' ';
 const char me = '@';
+const string alphabets=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 unsigned char color_choice;
 
 
@@ -167,9 +168,8 @@ int main(void)
 }
 
 void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter){// this function shows the direction of player moves
-	string base=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 	string show="";
-	show=base[(x+1)/2];
+	show=alphabets[(x+1)/2];
 	y = (y+1)/2;
     string num_str  = to_string(y);
     if(y < 10) num_str = "0"+num_str;
@@ -192,11 +192,10 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
     for (int i = 0; i != 51; ++i){
             cout << endl << "\t\t\t\t";
             for (int j = 0; j != 51; ++j){
-                /*if(j == 0 && i%2 != 0){
-                    cout << "A";
+                if(j == 0 && i%2 != 0){
+                    cout << alphabets[i];
                 }
-                else cout << " ";
-                */
+                else cout << " ";                
                 setcolor( 0x07 );  // Initial color for program
                 if(lvl1[i][j] == '@')setcolor( color_choice );
                 cout << lvl1[i][j] <<" ";
