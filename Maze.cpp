@@ -195,7 +195,7 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
                 if(j == 0 && i%2 != 0){
                     cout << alphabets[(i+1)/2] << " ";
                 }
-                else cout << " ";                
+                else cout << "  ";                
                 setcolor( 0x07 );  // Initial color for program
                 if(lvl1[i][j] == '@')setcolor( color_choice );
                 cout << lvl1[i][j] <<" ";
