@@ -146,7 +146,7 @@ int main(void)
         if (!isWall(x + x_move, y + y_move, lvl) && !isWall(x + 2*x_move, y + 2*y_move, lvl)){
             if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
                 system("CLS");
-                cout << "You Win!" << endl;// need change
+                cout << "You Won!" << endl;// need change
                 time(&ending);
                 cout << "You won the Game in: ";
                 setcolor(Green);
