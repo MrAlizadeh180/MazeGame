@@ -215,21 +215,18 @@ void setMe(int lvl){
 //got this function from a CPP forum
 char getKeyPress(){
     // this function gets a key (ARROW KEY) from player and returns char : u -> UP , l -> LEFT, r -> RIGHT, d -> DWON  
-
     int key = getch(); // 
     if (key == 224){
-        printf("key = %d", key);
-        Sleep(2000);
         key = getch();
 
         if (key == 72) {
-            key = 'u';  //up
+            return 'u';  //up
         } else if (key == 75){
-            key = 'l';  //left
+            return 'l';  //left
         } else if (key == 77){
-            key = 'r';  //right
+            return 'r';  //right
         } else if (key == 80){
-            key = 'd';  //dwon
+            return 'd';  //dwon
         }
     }
     return '0';
