@@ -217,10 +217,9 @@ char getKeyPress(){
     // this function gets a key (ARROW KEY) from player and returns char : u -> UP , l -> LEFT, r -> RIGHT, d -> DWON  
 
     int key = getch(); // 
-    printf("key = %d", key);
-    Sleep(2000);
     if (key == 224){
-
+        printf("key = %d", key);
+        Sleep(2000);
         key = getch();
 
         if (key == 72) {
