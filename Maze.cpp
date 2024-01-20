@@ -1,14 +1,23 @@
 #include <iostream>
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-#include <cmath>
-#include <windows.h> // for windows users
-#include <unistd.h> // for linux users
 #include <time.h>
 #include <conio.h>
-#include <string> 
-using namespace std;
+#include <string>
+using namespace std; 
+#ifndef NOMINMAX
+	#define NOMINMAX
+#endif
+#ifdef _WIN32 // for windows users
+	#include <windows.h>
+	void clear_console (){
+		system("cls");
+	}
+#endif
+#ifdef linux  // for linux users
+	#include <unistd.h>
+	void clear_console (){
+		system("clear");
+	}
+#endif
 
 // color definition
 #define Green 0x0A
@@ -107,7 +116,7 @@ int main(void)
     int dir_size = 5;
     int dir_counter = 0;
   
-    system("CLS");
+    clear_console();
     setMe(lvl);
     printLevel(lvl);
  
@@ -145,7 +154,7 @@ int main(void)
         x = getPos(lvl, y);
         if (!isWall(x + x_move, y + y_move, lvl) && !isWall(x + 2*x_move, y + 2*y_move, lvl)){
             if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
-                system("CLS");
+                clear_console();
                 cout << "You Won!" << endl;// need change
                 time(&ending);
                 cout << "You won the Game in: ";
@@ -156,7 +165,7 @@ int main(void)
                 Sleep(2000);
                 break;
             }
-            system("CLS");
+            clear_console();
             makeSpace(lvl, x, y);
             update(lvl, x + 2*x_move, y + 2*y_move);
             ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,dir_counter);
@@ -209,7 +218,7 @@ void setMe(int lvl){
     // set palyer position and color
     int x, y;
     color_choice = colorChoice();
-    system("CLS");
+    clear_console();
 
     x = getPos(lvl, y);
     lvl1[x][y] = me;
@@ -286,7 +295,7 @@ void makeSpace(int lvl, int x, int y){
 }
 
 unsigned char colorChoice(){
-    string color_arr[6] = {"Aqua", "Red", "Green", "White", "Yellow", "Purple"};
+    string color_arr[6] = {"Aque", "Red", "Green", "White", "Yellow", "Purple"};
     unsigned char color_code_arr[6] = {0x0B, 0x0C, 0x0A, 0x0F, 0x0E, 0x0D};
     int choice;
     cout << "Please choose a color for playing the game " << endl;
@@ -299,6 +308,6 @@ unsigned char colorChoice(){
     cout << "Your choice: ";
     cin >> choice;
     if (1 <= choice && choice <= 6)return color_code_arr[choice-1];
-    system("CLS");
+    clear_console();
     colorChoice();
 }
