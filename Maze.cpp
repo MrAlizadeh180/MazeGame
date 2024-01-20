@@ -165,7 +165,7 @@ void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter
     string num_str  = to_string(y);
     if(y < 10) num_str = "0"+num_str;
     if( dir_counter == dir_size ){
-    	direction.erase (0,7);
+    	direction.erase (0,5);
     	direction += num_str + show + "=>"; 
     }
     else{
@@ -204,10 +204,6 @@ void setMe(int lvl){
 
     x = getPos(lvl, y);
     lvl1[x][y] = me;
-
-
-
-
 }
 
 char getKeyPress(){
