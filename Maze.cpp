@@ -168,10 +168,10 @@ void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter
     if(y < 10) num_str = "0"+num_str;
     if( dir_counter == dir_size ){
     	direction.erase (0,7);
-    	direction += show + num_str + "==> "; 
+    	direction += num_str + show + "=>"; 
     }
     else{
-    	direction += show + num_str + "==> ";
+    	direction += num_str + show + "=>";
     	dir_counter ++;
     }
     cout << endl << "Direction: ";
