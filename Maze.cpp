@@ -2,21 +2,10 @@
 #include <time.h>
 #include <conio.h>
 #include <string>
+#include <windows.h>
 using namespace std; 
 #ifndef NOMINMAX
 	#define NOMINMAX
-#endif
-#ifdef _WIN32 // for windows users
-	#include <windows.h>
-	void clear_console (){
-		system("cls");
-	}
-#endif
-#ifdef linux  // for linux users
-	#include <unistd.h>
-	void clear_console (){
-		system("clear");
-	}
 #endif
 
 // color definition
@@ -29,26 +18,21 @@ using namespace std;
 
 // Functions
 unsigned char colorChoice();
-char getKeyPress();
-void printLevel(int);
-void setMe(int);
-bool isExit(int, int, int);
-bool isWall(int, int, int);
-int getPos(int, int&);
-void update(int, int, int);
-void makeSpace(int, int, int);
-void ShowDirection(int x,int y, string& direction, int dir_size,int& counter);
-void setcolor( unsigned char color )// this function is useful to change the color of console
-{
-  SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), color );
-}
+char getKeyPress();//
+void printLevel(int);//
+void setMe(int);//
+bool isExit(int, int, int);//
+bool isWall(int, int, int);//
+int getPos(int, int&);//
+void update(int, int, int);//
+void makeSpace(int, int, int);//
+void ShowDirection(int x,int y, string& direction, int dir_size,int& counter);//
+void setcolor( unsigned char color );// this function is useful to change the color of console
 
 const char space = ' ';
 const char me = '@';
 const string alphabets=" ABCDEFGHIJKLMNOPQRSTUVWXY";
 unsigned char color_choice;
-
-
 char lvl1[51][51] = { 
                  
 					{'+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+','+',' ','+','+','+','+','+','+','+'},
@@ -116,7 +100,7 @@ int main(void)
     int dir_size = 5;
     int dir_counter = 0;
   
-    clear_console();
+    system("CLS");
     setMe(lvl);
     printLevel(lvl);
  
@@ -154,7 +138,7 @@ int main(void)
         x = getPos(lvl, y);
         if (!isWall(x + x_move, y + y_move, lvl) && !isWall(x + 2*x_move, y + 2*y_move, lvl)){
             if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
-                clear_console();
+                system("CLS");
                 cout << "You Won!" << endl;// need change
                 time(&ending);
                 cout << "You won the Game in: ";
@@ -165,7 +149,7 @@ int main(void)
                 Sleep(2000);
                 break;
             }
-            clear_console();
+            system("CLS");
             makeSpace(lvl, x, y);
             update(lvl, x + 2*x_move, y + 2*y_move);
             ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,dir_counter);
@@ -218,7 +202,7 @@ void setMe(int lvl){
     // set palyer position and color
     int x, y;
     color_choice = colorChoice();
-    clear_console();
+    system("CLS");
 
     x = getPos(lvl, y);
     lvl1[x][y] = me;
@@ -294,6 +278,10 @@ void makeSpace(int lvl, int x, int y){
 
 }
 
+void setcolor( unsigned char color ){
+  SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), color );
+}
+
 unsigned char colorChoice(){
     string color_arr[6] = {"Aque", "Red", "Green", "White", "Yellow", "Purple"};
     unsigned char color_code_arr[6] = {0x0B, 0x0C, 0x0A, 0x0F, 0x0E, 0x0D};
@@ -308,6 +296,6 @@ unsigned char colorChoice(){
     cout << "Your choice: ";
     cin >> choice;
     if (1 <= choice && choice <= 6)return color_code_arr[choice-1];
-    clear_console();
+    system("CLS");
     colorChoice();
 }
