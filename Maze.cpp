@@ -286,7 +286,7 @@ void makeSpace(int lvl, int x, int y){
 }
 
 unsigned char colorChoice(){
-    string color_arr[6] = {"Aque", "Red", "Green", "White", "Yellow", "Purple"};
+    string color_arr[6] = {"Aqua", "Red", "Green", "White", "Yellow", "Purple"};
     unsigned char color_code_arr[6] = {0x0B, 0x0C, 0x0A, 0x0F, 0x0E, 0x0D};
     int choice;
     cout << "Please choose a color for playing the game " << endl;
