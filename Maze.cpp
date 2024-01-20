@@ -212,11 +212,15 @@ void setMe(int lvl){
 
 
 }
-//got this function from a CPP forum
+
 char getKeyPress(){
     // this function gets a key (ARROW KEY) from player and returns char : u -> UP , l -> LEFT, r -> RIGHT, d -> DWON  
-    int key = getch(); // 
-    if (key == 224){
+    /*
+    to find the ascii values of arrow keys we can use getch func in this way , it should be used twise 
+    at first if the user presses any of arrow keys the return value of getch would be 224
+    */
+    int key = getch(); 
+    if (key == 224){ 
         key = getch();
 
         if (key == 72) {
@@ -275,16 +279,18 @@ void makeSpace(int lvl, int x, int y){
 
 }
 
-void setcolor( unsigned char color ){
+void setcolor( unsigned char color ){ 
+  //this function gets an unsigned char that is releted to the color and sets the console color
   SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), color );
 }
 
 unsigned char colorChoice(){
-    string color_arr[6] = {"Aque", "Red", "Green", "White", "Yellow", "Purple"};
+    // this function returns an unsigned char that is releted to color that user chooses
+    string color_arr[6] = {"Aqua", "Red", "Green", "White", "Yellow", "Purple"};
     unsigned char color_code_arr[6] = {0x0B, 0x0C, 0x0A, 0x0F, 0x0E, 0x0D};
     int choice;
     cout << "Please choose a color for playing the game " << endl;
-    for(int i = 1; i <= 6; i++){
+    for(int i = 1; i <= 6; i++){ // printing the colors and numbers that are releated to any of them
         cout << i;
         setcolor(color_code_arr[i-1]);
         cout << ": "<< color_arr[i-1] << endl;
@@ -293,6 +299,7 @@ unsigned char colorChoice(){
     cout << "Your choice: ";
     cin >> choice;
     if (1 <= choice && choice <= 6)return color_code_arr[choice-1];
+    // if user enters a num that is not in {1,2,3,4,5,6} the console would be cleard and then the user should choose a new number
     system("CLS");
     colorChoice();
 }
