@@ -218,7 +218,7 @@ char getKeyPress(){
 
     int key = getch(); // 
     printf("key = %d", key);
-    sleep(2);
+    Sleep(2000);
     if (key == 224){
 
         key = getch();
