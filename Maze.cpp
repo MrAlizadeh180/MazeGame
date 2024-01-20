@@ -4,6 +4,7 @@
 #include <string>
 #include <windows.h>
 using namespace std; 
+
 #ifndef NOMINMAX
 	#define NOMINMAX
 #endif
@@ -214,13 +215,12 @@ void setMe(int lvl){
 //got this function from a CPP forum
 char getKeyPress(){
     // this function gets a key (ARROW KEY) from player and returns char : u -> UP , l -> LEFT, r -> RIGHT, d -> DWON  
-    char key = 127;
 
-    key = _getch(); // 
+    int key = getch(); // 
 
-    if (key == 0 || key == -32){
+    if (key == 224){
 
-        key = _getch();
+        key = getch();
 
         if (key == 72) {
             key = 'u';  //up
@@ -232,7 +232,7 @@ char getKeyPress(){
             key = 'd';  //dwon
         }
     }
-    return key;
+    return '';
 }
 
 bool isExit(int x, int y, int lvl){// this funvtion checks if user is in the exit of the Maze or not
