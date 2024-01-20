@@ -5,9 +5,6 @@
 #include <windows.h>
 using namespace std; 
 
-#ifndef NOMINMAX
-	#define NOMINMAX
-#endif
 
 // color definition
 #define Green 0x0A
