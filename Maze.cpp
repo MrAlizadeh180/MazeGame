@@ -232,7 +232,7 @@ char getKeyPress(){
             key = 'd';  //dwon
         }
     }
-    return '';
+    return '0';
 }
 
 bool isExit(int x, int y, int lvl){// this funvtion checks if user is in the exit of the Maze or not
