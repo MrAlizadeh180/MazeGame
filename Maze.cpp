@@ -152,8 +152,12 @@ int main(void)
             update(lvl, x + 2*x_move, y + 2*y_move);
             ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,dir_counter);
         }
-        else
-            ShowDirection(x,y,direction,dir_size,dir_counter);
+        else {
+        	cout << endl << "Direction: ";
+    		setcolor(0x0A); 
+    		cout <<direction << endl;
+    		setcolor(0x07);
+		}
     }
     return 0;
 }
