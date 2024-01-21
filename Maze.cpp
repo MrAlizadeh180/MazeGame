@@ -162,6 +162,7 @@ int main(void)
             makeSpace(lvl, x, y);
             update(lvl, x + 2*x_move, y + 2*y_move);
             ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,valid_turns_counter);
+            valid_turns_counter ++;
         }
         else {
         	cout << endl << "Direction: ";
@@ -186,7 +187,6 @@ void ShowDirection(int x,int y, string& direction, int dir_size,int& valid_turns
     else{
     	direction += num_str + show + "=>";
     }
-    valid_turns_counter ++;
     cout << endl << "Direction: ";
     setcolor(Green); 
     cout <<direction << endl;
