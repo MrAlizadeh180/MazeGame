@@ -17,16 +17,16 @@ using namespace std;
 
 // Functions
 unsigned char colorChoice();
-char getKeyPress();//
-void printLevel(int);//
-void setMe(int);//
-bool isExit(int, int, int);//
-bool isWall(int, int, int);//
-int getPos(int, int&);//
-void update(int, int, int);//
-void makeSpace(int, int, int);//
-void ShowDirection(int x,int y, string& direction, int dir_size,int& counter);//
-void setcolor( unsigned char color );// this function is useful to change the color of console
+char getKeyPress();
+void printLevel(int);
+void setMe(int);
+bool isExit(int, int, int);
+bool isWall(int, int, int);
+int getPos(int, int&);
+void update(int, int, int);
+void makeSpace(int, int, int);
+void ShowDirection(int x,int y, string& direction, int dir_size,int& counter);
+void setcolor( unsigned char color );
 
 const char space = ' ';
 const char me = '@';
