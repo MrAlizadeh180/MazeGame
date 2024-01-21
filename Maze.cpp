@@ -155,7 +155,7 @@ int main(void)
                 setcolor(ConsoleDefaultColor);
                 cout << "All of your turns: ";
                 setcolor(Green);
-                cout << all_turns_counter;
+                cout << all_turns_counter << endl << endl;
                 break;
             }
             system("CLS");
