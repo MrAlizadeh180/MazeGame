@@ -95,8 +95,8 @@ int main(void)
     int lvl;
     lvl=1;
     
-    string direction;
-    int dir_size = 5; // in this way the player can know the last 5 turns
+    string direction = "22A=>";
+    int extra_dir_size = 4; // in this way the player can know the last 5 turns
     int valid_turns_counter = 0; // the num of player valid turns 
     int all_turns_counter = 0; // the num of player turns 
   
@@ -161,7 +161,7 @@ int main(void)
             system("CLS");
             makeSpace(lvl, x, y);
             update(lvl, x + 2*x_move, y + 2*y_move);
-            ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,valid_turns_counter);
+            ShowDirection(x+2*x_move,y+2*y_move,direction,extra_dir_size,valid_turns_counter);
             valid_turns_counter ++;
         }
         else {
@@ -174,13 +174,13 @@ int main(void)
     return 0;
 }
 
-void ShowDirection(int x,int y, string& direction, int dir_size,int& valid_turns_counter){// this function shows the direction of player moves
+void ShowDirection(int x,int y, string& direction, int extra_dir_size,int& valid_turns_counter){// this function shows the direction of player moves
 	string show="";
 	show=alphabets[(x+1)/2];
 	y = (y+1)/2;
     string num_str  = to_string(y);
-    if(y < 10) num_str = "0"+num_str;
-    if( valid_turns_counter >= dir_size ){
+    if(y < 10) num_str = "0"+ num_str;
+    if( valid_turns_counter >= extra_dir_size ){
     	direction.erase (0,5);
     	direction += num_str + show + "=>"; 
     }
