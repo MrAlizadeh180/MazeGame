@@ -140,22 +140,22 @@ int main(void)
 
         if (!isWall(x + x_move, y + y_move, lvl) && !isWall(x + 2*x_move, y + 2*y_move, lvl)){
             if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
+                valid_turns_counter++;
                 system("CLS");
-                cout << "You Won!" << endl;
+                cout << "You Won!" << endl << endl;
                 time(&ending);
                 cout << "You won the Game in: ";
                 setcolor(Green);
                 cout << difftime(ending, start);
                 setcolor(ConsoleDefaultColor);
-                cout << " seconds " << endl;
+                cout << " seconds " << endl << endl;
                 cout << "Your valid turns: " ;
                 setcolor(Green);
-                cout << valid_turns_counter << endl;
+                cout << valid_turns_counter << endl << endl;
                 setcolor(ConsoleDefaultColor);
                 cout << "All of your turns: ";
                 setcolor(Green);
                 cout << all_turns_counter;
-                Sleep(2000);
                 break;
             }
             system("CLS");
