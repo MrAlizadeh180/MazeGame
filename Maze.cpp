@@ -11,6 +11,7 @@ using namespace std;
 #define Red 0x0C
 #define Aqua 0x0B
 #define Yellow 0x0E
+#define ConsoleDefaultColor 0x07
 #define White 0x0F
 #define Purple 0x0D
 
@@ -96,7 +97,8 @@ int main(void)
     
     string direction;
     int dir_size = 5; // in this way the player can know the last 5 turns
-    int dir_counter = 0; //the num of player good turns (turns that are not invalid) 
+    int valid_turns_counter = 0; // the num of player valid turns 
+    int all_turns_counter = 0; // the num of player turns 
   
     system("CLS");
     setMe(lvl);
@@ -134,6 +136,8 @@ int main(void)
         }
 
         x = getPos(lvl, y);
+        all_turns_counter ++; 
+
         if (!isWall(x + x_move, y + y_move, lvl) && !isWall(x + 2*x_move, y + 2*y_move, lvl)){
             if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
                 system("CLS");
@@ -142,44 +146,51 @@ int main(void)
                 cout << "You won the Game in: ";
                 setcolor(Green);
                 cout << difftime(ending, start);
-                setcolor(0x07);
+                setcolor(ConsoleDefaultColor);
                 cout << " seconds " << endl;
+                cout << "Your valid turns: " ;
+                setcolor(Green);
+                cout << valid_turns_counter << endl;
+                setcolor(ConsoleDefaultColor);
+                cout << "All of your turns: ";
+                setcolor(Green);
+                cout << all_turns_counter;
                 Sleep(2000);
                 break;
             }
             system("CLS");
             makeSpace(lvl, x, y);
             update(lvl, x + 2*x_move, y + 2*y_move);
-            ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,dir_counter);
+            ShowDirection(x+2*x_move,y+2*y_move,direction,dir_size,valid_turns_counter);
         }
         else {
         	cout << endl << "Direction: ";
-    		setcolor(0x0A); 
+    		setcolor(Green); 
     		cout <<direction << endl;
-    		setcolor(0x07);
+    		setcolor(ConsoleDefaultColor);
 		}
     }
     return 0;
 }
 
-void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter){// this function shows the direction of player moves
+void ShowDirection(int x,int y, string& direction, int dir_size,int& valid_turns_counter){// this function shows the direction of player moves
 	string show="";
 	show=alphabets[(x+1)/2];
 	y = (y+1)/2;
     string num_str  = to_string(y);
     if(y < 10) num_str = "0"+num_str;
-    if( dir_counter >= dir_size ){
+    if( valid_turns_counter >= dir_size ){
     	direction.erase (0,5);
     	direction += num_str + show + "=>"; 
     }
     else{
     	direction += num_str + show + "=>";
     }
-    dir_counter ++;
+    valid_turns_counter ++;
     cout << endl << "Direction: ";
-    setcolor(0x0A); 
+    setcolor(Green); 
     cout <<direction << endl;
-    setcolor(0x07);
+    setcolor(ConsoleDefaultColor);
 }
 
 void printLevel(int lvl){ // this function prints the borad of Maze game
@@ -191,10 +202,10 @@ void printLevel(int lvl){ // this function prints the borad of Maze game
                     cout << alphabets[(i+1)/2];
                 }
                 else cout <<" ";                
-                setcolor( 0x07 );  // Initial color for program
+                setcolor( ConsoleDefaultColor );  // Initial color for program
                 if(lvl1[i][j] == '@')setcolor( color_choice );
                 cout << lvl1[i][j] <<" ";
-                setcolor( 0x07 );
+                setcolor( ConsoleDefaultColor );
             }
         } cout << endl;
     cout << endl << "\t\t\t\t" << "    1     2     3     4     5     6     7     8     9     10    11    12    13    14    15    16    17    18    19    20    21    22    23    24    25" << endl;
@@ -291,7 +302,7 @@ unsigned char colorChoice(){
         cout << i;
         setcolor(color_code_arr[i-1]);
         cout << ": "<< color_arr[i-1] << endl;
-        setcolor(0x07); // white color
+        setcolor(ConsoleDefaultColor); // white color
     }
     cout << "Your choice: ";
     cin >> choice;
