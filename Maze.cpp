@@ -95,15 +95,15 @@ int main(void)
     lvl=1;
     
     string direction;
-    int dir_size = 5;
-    int dir_counter = 0;
+    int dir_size = 5; // in this way the player can know the last 5 turns
+    int dir_counter = 0; //the num of player good turns (turns that are not invalid) 
   
     system("CLS");
     setMe(lvl);
     printLevel(lvl);
  
     int x, y;
-    time_t start, ending;
+    time_t start, ending; 
     time(&start);
     while (true){
 
@@ -137,7 +137,7 @@ int main(void)
         if (!isWall(x + x_move, y + y_move, lvl) && !isWall(x + 2*x_move, y + 2*y_move, lvl)){
             if (isExit(x + 2*x_move, y + 2*y_move, lvl)){
                 system("CLS");
-                cout << "You Won!" << endl;// need change
+                cout << "You Won!" << endl;
                 time(&ending);
                 cout << "You won the Game in: ";
                 setcolor(Green);
@@ -168,14 +168,14 @@ void ShowDirection(int x,int y, string& direction, int dir_size,int& dir_counter
 	y = (y+1)/2;
     string num_str  = to_string(y);
     if(y < 10) num_str = "0"+num_str;
-    if( dir_counter == dir_size ){
+    if( dir_counter >= dir_size ){
     	direction.erase (0,5);
     	direction += num_str + show + "=>"; 
     }
     else{
     	direction += num_str + show + "=>";
-    	dir_counter ++;
     }
+    dir_counter ++;
     cout << endl << "Direction: ";
     setcolor(0x0A); 
     cout <<direction << endl;
@@ -214,7 +214,7 @@ char getKeyPress(){
     // this function gets a key (ARROW KEY) from player and returns char : u -> UP , l -> LEFT, r -> RIGHT, d -> DWON  
     /*
     to find the ascii values of arrow keys we can use getch func in this way , it should be used twise 
-    at first if the user presses any of arrow keys the return value of getch would be 224
+    at first if the player presses any of arrow keys the return value of getch would be 224
     */
     int key = getch(); 
     if (key == 224){ 
@@ -233,7 +233,7 @@ char getKeyPress(){
     return '0';
 }
 
-bool isExit(int x, int y, int lvl){// this funvtion checks if user is in the exit of the Maze or not
+bool isExit(int x, int y, int lvl){// this funvtion checks if player is in the exit of the Maze or not
    if ( x == 51 && y == 33) return true;
    return false;
 }
@@ -282,7 +282,7 @@ void setcolor( unsigned char color ){
 }
 
 unsigned char colorChoice(){
-    // this function returns an unsigned char that is releted to color that user chooses
+    // this function returns an unsigned char that is releted to color that player chooses
     string color_arr[6] = {"Aqua", "Red", "Green", "White", "Yellow", "Purple"};
     unsigned char color_code_arr[6] = {0x0B, 0x0C, 0x0A, 0x0F, 0x0E, 0x0D};
     int choice;
@@ -296,7 +296,7 @@ unsigned char colorChoice(){
     cout << "Your choice: ";
     cin >> choice;
     if (1 <= choice && choice <= 6)return color_code_arr[choice-1];
-    // if user enters a num that is not in {1,2,3,4,5,6} the console would be cleard and then the user should choose a new number
+    // if player enters a num that is not in {1,2,3,4,5,6} the console would be cleard and then the player should choose a new number
     system("CLS");
     colorChoice();
 }
