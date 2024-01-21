@@ -267,7 +267,7 @@ bool isWall(int x, int y, int lvl){ // this function checks that palyer can move
 	if(x<=0||y<=0 || lvl1[x][y] == '+'){
         setcolor(Red);
         cout << "\n\t\tCannot move! That is a wall / boundary.";
-        setcolor(0x0C);
+        setcolor(Red);
         Sleep(1200);
         system("CLS");
         printLevel(lvl);
